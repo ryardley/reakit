@@ -1,22 +1,22 @@
 // TODO: Refactor this mess
-import * as React from "react";
-import { Link } from "gatsby";
 import { css } from "emotion";
-import { Button } from "reakit";
+import { Link } from "gatsby";
+import * as React from "react";
 import { FiGithub } from "react-icons/fi";
 import { MdStar } from "react-icons/md";
+import { Button } from "reakit";
 import { usePalette } from "reakit-system-palette/utils";
-import SEO from "../components/SEO";
-import image from "../images/components.svg";
-import Spacer from "../components/Spacer";
-import pattern from "../images/pattern.svg";
-import Paragraph from "../components/Paragraph";
 import Heading from "../components/Heading";
+import HomePlayground from "../components/HomePlayground";
+import Paragraph from "../components/Paragraph";
+import SEO from "../components/SEO";
+import Spacer from "../components/Spacer";
 import Accessible from "../icons/Accessible";
 import Composable from "../icons/Composable";
 import Customizable from "../icons/Customizable";
 import TinyFast from "../icons/TinyFast";
-import HomePlayground from "../components/HomePlayground";
+import image from "../images/components.svg";
+import pattern from "../images/pattern.svg";
 
 function useGitHubStars() {
   const [stars, setStars] = React.useState<number | null>(null);
@@ -37,7 +37,8 @@ export default function IndexPage() {
       <div
         className={css`
           width: 100%;
-          height: 500px;
+          min-height: 500px;
+          height: 90vh;
           background: linear-gradient(
             144deg,
             #7b60ff,
@@ -72,9 +73,12 @@ export default function IndexPage() {
               max-width: 1200px;
               height: calc(100% + 68px);
               box-sizing: border-box;
-              background: url(${image}) right 32px bottom no-repeat;
-              background-size: 57%;
+              background: url(${image}) right center no-repeat;
+              background-size: 50%;
               z-index: 1;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
               @media (max-width: 768px) {
                 padding: 8px;
                 background-position: center top var(--header-height, 60px);
@@ -83,14 +87,15 @@ export default function IndexPage() {
               }
             `}
           >
-            <p
+            <h1
               className={css`
                 font-size: 3.2em;
-                font-weight: 700;
+                font-weight: 400;
                 line-height: 1.1;
+                padding-bottom: 32px;
                 color: white;
                 width: 10em;
-                margin: 160px 0 40px 0;
+                margin: 0;
                 @media (max-width: 768px) {
                   font-size: 1.8em;
                   width: auto;
@@ -99,8 +104,16 @@ export default function IndexPage() {
                 }
               `}
             >
-              Build accessible rich web apps with React
-            </p>
+              Build{" "}
+              <strong
+                className={css`
+                  font-weight: 500;
+                `}
+              >
+                accessible
+              </strong>{" "}
+              rich web apps with React
+            </h1>
             <div
               className={css`
                 display: grid;
@@ -122,6 +135,12 @@ export default function IndexPage() {
                 as={Link}
                 to="/docs/get-started/"
                 unstable_system={{ palette: "white" }}
+                className={css`
+                  color: #484a7a;
+                  font-size: 14px;
+                  box-shadow: rgba(8, 35, 51, 0.1) 0px 2px 4px;
+                  padding: 0px 19px;
+                `}
               >
                 Get started
               </Button>
@@ -129,13 +148,21 @@ export default function IndexPage() {
                 as={Link}
                 to="/docs/button/"
                 unstable_system={{ palette: "white", fill: "outline" }}
+                className={css`
+                  background: #484a7a;
+                  border-color: #484a7a;
+                  font-size: 14px;
+                  box-shadow: rgba(8, 35, 51, 0.1) 0px 2px 4px;
+                  padding: 0px 19px;
+                  height: 40px;
+                `}
               >
                 Components
               </Button>
             </div>
             <div
               className={css`
-                margin: 30px 0;
+                margin-top: 24px;
                 display: grid;
                 grid-auto-flow: column;
                 justify-content: start;
@@ -154,7 +181,7 @@ export default function IndexPage() {
                     text-decoration: underline;
                   }
                   svg {
-                    font-size: 1.2em;
+                    font-size: 1.5em;
                   }
                 }
               `}
